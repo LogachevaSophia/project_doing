@@ -1,15 +1,20 @@
-from random import randint
- 
-N = 10
-a = []
-for i in range(N):
-    a.append(randint(1, 99))
-print(a)
- 
- 
-for i in range(N-1):
-    for j in range(N-i-1):
-        if a[j] > a[j+1]:
-            a[j], a[j+1] = a[j+1], a[j]
- 
-print(a)
+def
+ sort(array):
+    """Sort the array by using quicksort."""
+    less = []
+    equal = []
+    greater = []
+    if len(array) > 1:
+        pivot = array[0]
+        for x in array:
+            if x < pivot:
+                less.append(x)
+            elif x == pivot:
+                equal.append(x)
+            elif x > pivot:
+                greater.append(x)
+        # Don't forget to return something!
+        return sort(less)+equal+sort(greater)  # Just use the + operator to join lists
+    # Note that you want equal ^^^^^ not pivot
+    else:  # You need to handle the part at the end of the recursion - when you only have one element in your array, just return the array.
+        return array
