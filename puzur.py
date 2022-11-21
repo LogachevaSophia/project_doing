@@ -1,8 +1,15 @@
-def insertion_sort(alist):
-    for i in range(1, len(alist)):
-        temp = alist[i]
-        j = i - 1
-        while (j >= 0 and temp < alist[j]):
-            alist[j + 1] = alist[j]
-            j = j - 1
-        alist[j + 1] = temp
+def shellSort(array):
+    n = len(array)
+    k = int(math.log2(n))
+    interval = 2*k -1
+    while interval > 0:
+        for i in range(interval, n):
+            temp = array[i]
+            j = i
+            while j >= interval and array[j - interval] > temp:
+                array[j] = array[j - interval]
+                j -= interval
+            array[j] = temp
+        k -= 1
+        interval = 2*k -1
+    return array
